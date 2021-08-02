@@ -1,0 +1,17 @@
+version: '3.6'
+
+
+
+services:
+  app:
+    volumes:
+      - ./app:/app/app
+      - ./environments:/app/environments
+      # add configs if required
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      sh -c "python -m app.main"
+    env_file:
+      - environments/.env.remote
